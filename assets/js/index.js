@@ -10,7 +10,76 @@ var dom = {
   nav_link: document.querySelectorAll("nav a"),
   sections: document.querySelectorAll("section"),
   href_link: document.querySelectorAll("a [href]"),
+  testimonial_card: document.querySelectorAll(".testimonial-card"),
+  next_testimonial: document.getElementById("next-testimonial"),
+  prev_testimonial: document.getElementById("prev-testimonial"),
+  carousel_indicator: document.querySelectorAll(".carousel-indicator"),
+  scroll_to_top: document.getElementById("scroll-to-top"),
 };
+// scroll top button
+window.addEventListener("scroll", () => {
+  window.pageYOffset >= 1000
+    ? dom.scroll_to_top.classList.remove("invisible")
+    : dom.scroll_to_top.classList.add("invisible");
+});
+dom.scroll_to_top.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    left: 0,
+    behavior: "smooth",
+  });
+});
+// show carsoul
+var currentIndex = 0;
+function getCount() {
+  return window.innerWidth >= 768 ? 3 : 1;
+}
+function showCarsoul() {
+  dom.testimonial_card.forEach((card, index) => {
+    card.classList.remove("active");
+    if (index >= currentIndex && index < currentIndex + getCount()) {
+      card.classList.add("active");
+    }
+    awitindecator();
+  });
+}
+
+dom.next_testimonial.addEventListener("click", () => {
+  currentIndex++;
+  if (currentIndex > dom.testimonial_card.length - getCount()) {
+    currentIndex = 0;
+  }
+  console.log(currentIndex);
+  showCarsoul();
+});
+dom.prev_testimonial.addEventListener("click", () => {
+  currentIndex--;
+  if (currentIndex < 0) {
+    currentIndex = dom.testimonial_card.length - getCount();
+  }
+  showCarsoul();
+});
+dom.carousel_indicator.forEach((indecatore, index) => {
+  indecatore.addEventListener("click", () => {
+    currentIndex = index;
+    showCarsoul();
+  });
+});
+function awitindecator() {
+  dom.carousel_indicator.forEach((indecatore, index) => {
+    indecatore.classList.toggle("active", currentIndex === index);
+  });
+}
+
+(function autoswap() {
+  return setInterval(() => {
+    currentIndex++;
+    if (currentIndex > dom.testimonial_card.length - getCount()) {
+      currentIndex = 0;
+    }
+    showCarsoul();
+  }, 3000);
+})();
 
 //scroll spy
 window.addEventListener("scroll", () => {
@@ -57,5 +126,7 @@ dom.portfolio_filter_tabs.forEach((tab) => {
 });
 window.addEventListener("load", () => {
   dom.portfolio_items.forEach((item) => item.classList.add("active"));
+
+  showCarsoul();
 });
 ///

@@ -42,3 +42,17 @@ html {
 .portfolio-item.active {
   display: block; /* أو flex / grid حسب التصميم */
 }
+.testimonial-card {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.testimonial-card.active {
+  opacity: 1;
+
+  display: block;
+}
+.carousel-indicator.active {
+  transform: scale(1.25);
+  background-color: #7163f2;
+}
