@@ -42,3 +42,18 @@ html {
 .portfolio-item.active {
   display: block; /* أو flex / grid حسب التصميم */
 }
+.color {
+  background-color: #7163f2;
+  /* width: 6.25rem; */
+  border-radius: 50%;
+  height: 1.5625rem;
+}
+.color2 {
+  background-color: #f3614e;
+}
+.color3 {
+  background-color: #0aa372;
+}
+.color4 {
+  background-color: #2596e8;
+}
