@@ -12,25 +12,8 @@ var dom = {
   color: document.querySelectorAll(".color"),
   span: document.querySelectorAll("span"),
   href_link: document.querySelectorAll("a [href]"),
-  reset_settings: document.getElementById("reset-settings"),
 };
-//thems color change
-dom.color.forEach((btn) => {
-  let current_color = btn.dataset.color;
-  console.log(current_color);
 
-  btn.addEventListener("click", () => {
-    dom.span.forEach((span) => {
-      span.style.color = `${current_color}`;
-    });
-  });
-});
-
-dom.reset_settings.addEventListener("click", () => {
-  dom.span.forEach((span) => {
-    span.style.color = "#7163f2";
-  });
-});
 //scroll spy
 window.addEventListener("scroll", () => {
   let current_section = "";
@@ -76,5 +59,7 @@ dom.portfolio_filter_tabs.forEach((tab) => {
 });
 window.addEventListener("load", () => {
   dom.portfolio_items.forEach((item) => item.classList.add("active"));
+
+  showCarsoul();
 });
 ///
