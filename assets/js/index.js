@@ -16,6 +16,7 @@ var dom = {
   scroll_to_top: document.getElementById("scroll-to-top"),
   color: document.querySelectorAll(".color"),
   span: document.querySelectorAll("span"),
+  reset_settings: document.getElementById("reset-settings"),
 };
 // scroll top button
 window.addEventListener("scroll", () => {
